@@ -23,8 +23,8 @@ export default function Storee() {
     const {getCartProducts} = useContext(CartContext)
     const dispatch = useDispatch()
     const productdata = useSelector(state=>state.productreducer.products)
-    const duplicat = useSelector(state=>state.duplicatereducer.duplicate)
-    const whis = useSelector(state=>state.heartreducer.heartarr)
+    const duplicat = useSelector(state=>state.duplicatereducer.duplicate) // cart product id
+    const whis = useSelector(state=>state.heartreducer.heartarr) //whislist product id
 const baseurl = 'https://api.escuelajs.co/api/v1/';
 const [data, setdata] =useState()
 const [idarr , setidarr] =useState([])
@@ -129,28 +129,21 @@ const removeheart = (id)=>{
 console.log(whis , "whis for filter");
 const StoreFilterModalFun =(cart , wish)=>{
 
-   const product = whis?.map(ele=>{
-        console.log(ele , "whis");
-        console.log(productdata , "productdata for filter");
-        const ab = productdata?.find(elem=> elem?.id === ele)
-        return ab
-      
-       })
-       console.log(product , "product for filter");
-    if(cart && wish){
-        setsearchdata([...getCartProducts() , ...product])
+ 
+//     if(cart && wish){
+//         setsearchdata([...getCartProducts() , ...product])
 
-    }
-   else if(cart){
-        setsearchdata(getCartProducts())
-    }
+//     }
+//    else if(cart){
+//         setsearchdata(getCartProducts())
+//     }
   
-    else if(wish){
-        setsearchdata(product) 
-    }
-    else{
-        setsearchdata(productdata)
-    }
+//     else if(wish){
+//         setsearchdata([...product]) 
+//     }
+//     else{
+//         setsearchdata([...productdata])
+//     }
  
 }
 
@@ -177,45 +170,136 @@ const Searchfun =(e)=>{
 
 
 
-const ModalFilterFun =(state)=>{
 
-    console.log([...data1] , "from store category");
-    console.log(Object.values(state) , "from store category");
+// const priceFilterfun =(minmax)=>{ // price filter
 
+   
+// }
+
+
+
+const ModalFilterFun =(state , cart , wish , minmax)=>{
+
+    console.log([...data1] , "category");
+    console.log(Object.values(state) , "category array");
 
 const ab = [...data1].filter((ele,index)=>{
-
-if( Object.values(state)[index]===true){
-
+if( Object.values(state)[index]===true){   //true category
     return ele
 }
-
-
 })
+
+console.log(ab , "filtered category");
+
+let filterdata = [...productdata]
+if(cart && wish){
+
+   filterdata = whis?.reduce((ele , innele)=>{
+
+        let  tempItem = [...getCartProducts()]?.find(elem=> elem?.id === innele)
+        if(tempItem){
+        ele.push(tempItem) 
+        }
+        return ele
+      
+        },[])
+}
+
+
+else if(cart){
+
+    filterdata =  getCartProducts()
+}
+
+ else if(wish){
+
+    const product = whis?.map(ele=>{
+       return [...productdata]?.find(elem=> elem?.id === ele)
+      
+       })
+
+       filterdata = [...product]
+}
+
+
 let arr =[];
 
-console.log(ab , "abbbsbskadh");
-if(ab.length===0){
-    setsearchdata([...productdata])
-
-}
-else{
+if(ab.length>0){
     const bb = ab.map((elemm,ind)=>{
         console.log(elemm , "elemmmmmmmmmmmmmmmmmmm");
-     const cb = [...productdata].filter(element=>element?.category===elemm) 
+     const cb = [...filterdata].filter(element=>element?.category===elemm)      //arr has category filter element
      console.log(cb , "cb");
     arr =[...arr , ...cb]
         
     })
-    console.log(bb , "bbbbbbbbbbbbbbbbbbbb");
-    
-    console.log(arr , "arrrrrrrrrrrrrrararrararr");
-    
-    setsearchdata([...arr])
+
+   filterdata = [...arr]
 }
 
-setdata1([])
+
+let objlen = Object.values(minmax).length  //minmax object length
+if(objlen >0){
+    filterdata =  [...filterdata].filter(ele=>{
+       if(((ele?.price*79.80 <= minmax.max) || !minmax.max )&& ((ele?.price*79.80 >= minmax.min) || !minmax.min)) {
+            return ele
+        }
+    })
 }
+
+if(objlen===0 && ab.length===0 && !cart && !wish){
+
+        filterdata = [...productdata]
+}
+
+
+
+setsearchdata(filterdata)
+
+
+}
+
+
+
+
+// console.log(priceProduct , "priceproduct");
+
+
+// if(objlen!==0){
+//     setsearchdata([...priceProduct])
+// }
+
+// else if(ab.length===0 && cart){
+
+//     setsearchdata(getCartProducts())
+
+// }
+// else if(ab.length===0 && wish ){
+//     setsearchdata(whis?.map(ele=>{
+//         return productdata?.find(elem=> elem?.id === ele)
+//        }))
+// }
+// else if(ab.length===0 && cart && wish){
+//     setsearchdata([...getCartProducts() , ...(whis?.map(ele=>{
+//         return productdata?.find(elem=> elem?.id === ele)
+//        }))])
+
+// }
+
+// else if(ab.length === 0 && objlen ===0){
+//     setsearchdata([...productdata])
+
+// }
+
+// else{
+  
+//     console.log(bb , "bbbbbbbbbbbbbbbbbbbb");
+    
+//     console.log(arr , "arrrrrrrrrrrrrrararrararr");
+    
+//     setsearchdata([...arr])
+// }
+
+
 
 
 
@@ -269,7 +353,7 @@ console.log(searchdata , "bbbbbbbbbbbbbbbbbbbbb");
             }
 
             <Storemodal handleclose={handleclose} show={modal} id={modaldata}/>
-            <StoreFilterModal show={StoreFilter} data1={data1} close={FilterClose} state={StoreFilterModalFun} filters={ModalFilterFun}/>
+            <StoreFilterModal show={StoreFilter} data1={data1}  close={FilterClose} state={StoreFilterModalFun} filters={ModalFilterFun}/>
         </div>
     )
 

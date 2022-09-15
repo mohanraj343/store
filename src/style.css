@@ -487,3 +487,9 @@ input[type=number] {
 input::-webkit-outer-spin-button , input::-webkit-inner-spin-button{
     -webkit-appearance: none;
 } */
+
+.PriceFilter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
