@@ -266,6 +266,7 @@ const check=(formik)=>{
         >
           Submit
         </button>
+        <button className="btn bg-warning">warning</button>
       </div>
     </div>
   );
