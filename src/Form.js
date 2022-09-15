@@ -197,7 +197,7 @@ const check=(formik)=>{
           <div className="error1">{formik.errors.name}</div>
         ) : null}
       </div>
-
+<div> </div>
       <div className="my-2 fom">
         <label>Email </label> <br></br>
         <input
