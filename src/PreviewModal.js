@@ -79,6 +79,8 @@ console.log(duplicate , "duplicatemodal");
     {/* </div> */}
 
 <div>
+
+  <div></div>
   <h6 className='text-center text-success'><b>{"Total Price : "}</b>{props?.totall}</h6>
 </div>
     <div className='d-flex align-items-center justify-content-center'>
