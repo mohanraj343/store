@@ -82,7 +82,7 @@ console.log(stat , "stat");
     
             <div className='d-flex row'>
     <div className='left col-lg-4'>
-                                <img src={ele?.image}></img> 
+                                <img src={ele?.image[0]}></img> 
                                    </div>
                                    <div className='col-lg-8'> <h5>{ele?.title}</h5> <br></br>
                                     <p><b>{"Price : "}</b>&#8377; {ele?.price*79.80}</p>

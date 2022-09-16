@@ -22,19 +22,19 @@ h3{
 }
 
 .header{
-  background-color: aqua;
+  background-color: aliceblue;
 }
 .sidebar{
-  background-color: chartreuse;
+  background-color: honeydew;
 }
 .outlet{
 
-  background-color: crimson;
+  background-color: hotpink;
 }
 
 .footer{
 
-  background-color: darkcyan;
+  background-color: yellowgreen;
 }
 
 .user:hover{

@@ -98,7 +98,7 @@
 }
 .sidebars:hover{
 
-    background-color: whitesmoke !important;
+    background-color: aliceblue !important;
     color: crimson;
 }
 
@@ -492,4 +492,34 @@ input::-webkit-outer-spin-button , input::-webkit-inner-spin-button{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.eyeimg{
+    width: 18%;
+    float: right;
+    cursor: pointer;
+}
+
+.StoreModalImgaes{
+    width: 80%;
+}
+
+.leftright{
+    width: 10%;
+    height: 10%;
+    cursor: pointer;
+}
+.left:active{
+    transform: translateX(-30%);
+    transition: 1s;
+}
+.right:active{
+    transform: translateX(30%);
+    transition: 1s;
+}
+
+.carousel ul {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 0 !important;
 }
