@@ -95,19 +95,20 @@
     font-size: 16px;
     font-family:"Cambria" Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
+    color: black;
 }
 .sidebars:hover{
 
-    background-color: aliceblue !important;
-    color: crimson;
+    background-color: bisque !important;
+    color: black;
 }
 
 .titles:hover{
-    color:white;
     transform: scale(1.2) translateY(-5px) ;
     box-shadow: 0px 3px 4px 1px black; 
 
 }
+
 /* .titles:nth-child(1):hover{
 
     transform: scale(1.2) translateX(655px);
@@ -347,15 +348,15 @@ animation: heart1 0.2s linear;}
 
 .addtocart:hover{
 
-    background-color: aquamarine !important;
+    background-color: darkseagreen !important;
 }
 
 .gotocart{
-    background-color: aquamarine !important;
+    background-color: darkseagreen !important;
 
 }
 .gotocart:hover{
-    background-color: darkseagreen !important;
+    background-color: lightcyan !important;
     color: black !important;
 }
 

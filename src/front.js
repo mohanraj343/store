@@ -55,10 +55,10 @@ export default function Front() {
     </div>
     
     <div className='body row'>
-      <div className='sidebar col-lg-3 text-center'>
+      <div className='sidebar col-lg-3 text-center' >
       <h3>sidebar</h3>
     
-      <Link to='/home/signup'><div className='row d-flex justify-content-center py-2 sidebars'>Signup</div>
+      <Link to='/home/signup'><div className='row d-flex justify-content-center py-2 sidebars' onClick={(e)=>{e.currentTarget.style.backgroundColor='bisque'}}>Signup</div>
 </Link>
       <Link to='/home/about'><div className='row d-flex justify-content-center py-2 sidebars'>About</div>
 </Link>
@@ -74,7 +74,7 @@ export default function Front() {
   }
   <Link to='/home/newname'><div className='row d-flex justify-content-center py-2 sidebars'>NewName</div></Link>
   <Link to='/home/filteredit'><div className='row d-flex justify-content-center py-2 sidebars'>Filteredit</div></Link>
-  <Link to='/home/store'><div className='row d-flex justify-content-center  py-2 sidebars'>Store</div></Link>
+  <Link to='/home/store'><div className='row d-flex justify-content-center  py-2 sidebars' onClick={(e)=>{e.currentTarget.style.backgroundColor='bisque'}}>Store</div></Link>
   <Link to='/home/cart'><div className='row d-flex justify-content-center py-2 sidebars'>Cart</div></Link>
 {stat && <Link to='/home/myorders'><div className='row d-flex justify-content-center py-2 sidebars'>MyOrders</div></Link>
 }
